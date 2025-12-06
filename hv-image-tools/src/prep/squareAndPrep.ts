@@ -19,7 +19,8 @@ export async function squareAndPrep(
       })
       .threshold(180)
       // .toFormat(BMP_FORMAT)  // ✅ TS now knows this is a valid format
-      .toFormat("bmp" as any)      .toFile(outputPath);
+      .toFormat("bmp" as any)
+      .toFile(outputPath);
 
     console.log(`Square-prepped image saved to ${outputPath}`);
 }
