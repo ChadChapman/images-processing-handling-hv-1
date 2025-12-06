@@ -1,24 +1,20 @@
-//
-
 import sharp from "sharp";
-import fs from "fs";
-import path from "path";
 
 export async function squareAndPrep(
   inputPath: string,
   outputPath: string,
   size = 1024
 ) {
-  await sharp(inputPath)
-    .resize({
-      width: size,
-      height: size,
-      fit: "contain",
-      background: { r: 255, g: 255, b: 255, alpha: 1 }
-    })
-    .threshold(180)
-    .toFile(outputPath);
+    await sharp(inputPath)
+      .resize({
+          width: size,
+          height: size,
+          fit: "contain",
+          background: { r: 255, g: 255, b: 255, alpha: 1 }
+      })
+      .threshold(180)        // make it crisp B/W
+      .toFormat("bmp")       // 🔴 force BMP format for potrace
+      .toFile(outputPath);
 
-  console.log(`Square-prepped image saved to ${outputPath}`);
+    console.log(`Square-prepped image saved to ${outputPath}`);
 }
-
