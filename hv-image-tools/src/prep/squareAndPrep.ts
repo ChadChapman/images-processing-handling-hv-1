@@ -1,6 +1,4 @@
-import sharp, { FormatEnum } from "sharp";
-
-const BMP_FORMAT: keyof FormatEnum = "bmp";
+import sharp from "sharp";
 
 export async function squareAndPrep(
   inputPath: string,
@@ -14,8 +12,9 @@ export async function squareAndPrep(
           fit: "contain",
           background: { r: 255, g: 255, b: 255, alpha: 1 }
       })
+      // make it nice, crisp B/W for tracing
       .threshold(180)
-      .toFormat(BMP_FORMAT)  // ✅ properly typed, no TS error
+      .png()                // ✅ explicit PNG output
       .toFile(outputPath);
 
     console.log(`Square-prepped image saved to ${outputPath}`);
