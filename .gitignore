@@ -1,0 +1,17 @@
+
+
+node_modules
+.idea
+npm-debug.log
+dist
+build
+.env
+.DS_Store
+.vscode
+.idea
+*.log
+coverage
+*.tmp
+*.bak
+*.swp
+Thumbs.db
